@@ -6,6 +6,9 @@ import {
   UserButton
 } from '@clerk/nextjs'
 import './globals.css'
+import Navbar from '@/components/Navbar'
+import { ThemeProvider } from "next-themes";
+import { Toaster } from 'react-hot-toast'
 export default function RootLayout({
   children,
 }: {
@@ -15,7 +18,11 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body>
-          {children}
+          <ThemeProvider attribute="class">
+            <Navbar />
+            <Toaster position='top-center' reverseOrder={false} />
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
